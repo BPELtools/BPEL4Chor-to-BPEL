@@ -11,7 +11,7 @@ The [gradle wrapper](http://gradle.org/docs/current/userguide/gradle_wrapper.htm
 
 Eclipse
 -------
-
+cd into org.bpel4chor.tobpel.
 Run `gradlew eclipse` to generate an eclipse config.
 
 Running
