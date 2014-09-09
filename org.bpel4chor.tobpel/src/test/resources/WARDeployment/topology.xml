@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topology xmlns:p="urn:choreography/process"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          name="Choreography"
+          targetNamespace="http://www.example.org/chor/topology"
+          xsi:schemaLocation="urn:HPI_IAAS:choreography:schemas:choreography:topology:2006/12 http://www.iaas.uni-stuttgart.de/schemas/bpel4chor/topology.xsd">
+   <participantTypes>
+      <participantType name="customer" participantBehaviorDescription="p:customer"/>
+      <participantType name="saasProvider" participantBehaviorDescription="p:saasProvider"/>
+      <participantType name="paasProvider" participantBehaviorDescription="p:paasProvider"/>
+   </participantTypes>
+   <participants>
+      <participant name="customer" type="customer"/>
+      <participant name="saasProvider" type="saasProvider"/>
+      <participant name="paasProvider" type="paasProvider"/>
+   </participants>
+   <messageLinks>
+      <messageLink messageName="VMRequestRequestMessage" name="VMRequestRequestMessage" receiveActivity="receiveVMRequest"
+                   receiver="paasProvider"
+                   sendActivity="requestVM"
+                   sender="saasProvider"/>
+      <messageLink messageName="VMRequestResponseMessage" name="VMRequestResponseMessage" receiveActivity="requestVM"
+                   receiver="saasProvider"
+                   sendActivity="sendIPAdress"
+                   sender="paasProvider"/>
+      <messageLink messageName="DeployWARFileRequest" name="DeployWARFileRequest" participantRefs="customer"
+                   receiveActivity="receiveRequestWARDeployment"
+                   receiver="saasProvider"
+                   sendActivity="requestWARDeployment"
+                   sender="customer"/>
+      <messageLink messageName="DeployWARFileResponse" name="DeployWARFileResponse" receiveActivity="receiveResponse"
+                   receiver="customer"
+                   sendActivity="sendURL"
+                   sender="saasProvider"/>
+   </messageLinks>
+</topology>

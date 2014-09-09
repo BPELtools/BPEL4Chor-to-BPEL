@@ -1,0 +1,11 @@
+<grounding topology="top:bookingtopology" xmlns:top="http://www.example.org/chor/topology" xmlns:saas="http://www.example.com/SaaSProcess/" xmlns:paas="http://www.example.com/PaaSProcess/" xmlns:c="http://www.example.com/CustomerProcess/" xmlns:props="http://www.example.org/processes/properties" xmlns="urn:HPI_IAAS:choreography:schemas:choreography:grounding:2006/12">
+<messageLinks>
+	<messageLink name="DeployWARFileRequest" portType="saas:SaaSPortType" operation="receiveDeployWARFileRequest"/>
+	<messageLink name="DeployWARFileResponse" portType="c:CustomerPortType" operation="receiveDeployWARFileResponse" />
+	<messageLink name="VMRequestRequestMessage" portType="paas:PaaSPortType" operation="receiveWARDeployment" />
+	<messageLink name="VMRequestResponseMessage" portType="paas:PaaSPortType" operation="receiveWARDeployment" />
+</messageLinks>
+<participantRefs>
+	<participantRef name="customer" WSDLproperty="props:URL" />
+</participantRefs>
+</grounding>
