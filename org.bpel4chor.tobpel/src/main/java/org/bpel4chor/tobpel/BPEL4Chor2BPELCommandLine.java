@@ -43,15 +43,14 @@ public class BPEL4Chor2BPELCommandLine {
 		}
 		Document docTopo = docBuilder.parse(topology[0]);
 
-		File[] grounding = file.listFiles(new FilenameFilter() {public boolean accept(File dir, String name) {return name.endsWith("grounding.bpel");}});
+		File[] grounding = file.listFiles(new FilenameFilter() {public boolean accept(File dir, String name) {return name.endsWith("grounding.xml");}});
 		if (grounding.length != 1) {
 			throw new Exception("grounding error");
 		}
 		Document docGround = docBuilder.parse(grounding[0]);
 
 		File[] pbds = file.listFiles(new FilenameFilter() {public boolean accept(File dir, String name) {
-			if (!name.equals("grounding.bpel")){ return name.endsWith(".bpel");}
-			else return false ;
+			return name.endsWith(".bpel");
 		}});
 		if (pbds.length == 0) {
 			throw new Exception("No PBDs found");
