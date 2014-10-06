@@ -4,15 +4,14 @@
          abstractProcessProfile="urn:HPI_IAAS:choreography:profile:2006/12"
          exitOnStandardFault="no"
          expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
-         name="saasProvider"
+         name="iaasProvider"
          queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
          suppressJoinFailure="no"
          targetNamespace="urn:choreography/process"
          xsi:schemaLocation="http://docs.oasis-open.org/wsbpel/2.0/process/abstract http://docs.oasis-open.org/wsbpel/2.0/OS/process/abstract/ws-bpel_abstract_common_base.xsd">
    <sequence>
-      <receive createInstance="yes" name="receiveRequestWARDeployment" variable="##opaque"/>
-      <invoke inputVariable="##opaque" name="requestVM" outputVariable="##opaque"/>
-      <opaqueActivity name="installTomcatAndDeployWAR"/>
-      <invoke inputVariable="##opaque" name="sendURL"/>
+      <receive createInstance="yes" name="receiveVMRequest" variable="##opaque"/>
+      <opaqueActivity name="DeployVM"/>
+      <reply name="sendIPAdress" variable="##opaque"/>
    </sequence>
 </process>

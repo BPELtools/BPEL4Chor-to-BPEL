@@ -6,31 +6,31 @@
           xsi:schemaLocation="urn:HPI_IAAS:choreography:schemas:choreography:topology:2006/12 http://www.iaas.uni-stuttgart.de/schemas/bpel4chor/topology.xsd">
    <participantTypes>
       <participantType name="customer" participantBehaviorDescription="p:customer"/>
-      <participantType name="saasProvider" participantBehaviorDescription="p:saasProvider"/>
       <participantType name="paasProvider" participantBehaviorDescription="p:paasProvider"/>
+      <participantType name="iaasProvider" participantBehaviorDescription="p:iaasProvider"/>
    </participantTypes>
    <participants>
       <participant name="customer" type="customer"/>
-      <participant name="saasProvider" type="saasProvider"/>
       <participant name="paasProvider" type="paasProvider"/>
+      <participant name="iaasProvider" type="iaasProvider"/>
    </participants>
    <messageLinks>
-      <messageLink messageName="VMRequestRequestMessage" name="VMRequestRequestMessage" receiveActivity="receiveVMRequest"
-                   receiver="paasProvider"
+      <messageLink messageName="VMRequestRequestMessage" receiveActivity="receiveVMRequest" name="VMRequestRequestMessage"
+                   receiver="iaasProvider"
                    sendActivity="requestVM"
-                   sender="saasProvider"/>
-      <messageLink messageName="VMRequestResponseMessage" name="VMRequestResponseMessage" receiveActivity="requestVM"
-                   receiver="saasProvider"
-                   sendActivity="sendIPAdress"
                    sender="paasProvider"/>
-      <messageLink messageName="DeployWARFileRequest" name="DeployWARFileRequest" participantRefs="customer"
+      <messageLink messageName="VMRequestResponseMessage" receiveActivity="requestVM" name="VMRequestResponseMessage"
+                   receiver="paasProvider"
+                   sendActivity="sendIPAdress"
+                   sender="iaasProvider"/>
+      <messageLink messageName="DeployWARFileRequest" participantRefs="customer" name="DeployWARFileRequest"
                    receiveActivity="receiveRequestWARDeployment"
-                   receiver="saasProvider"
+                   receiver="paasProvider"
                    sendActivity="requestWARDeployment"
                    sender="customer"/>
-      <messageLink messageName="DeployWARFileResponse" name="DeployWARFileResponse" receiveActivity="receiveResponse"
+      <messageLink messageName="DeployWARFileResponse" receiveActivity="receiveResponse" name="DeployWARFileResponse"
                    receiver="customer"
                    sendActivity="sendURL"
-                   sender="saasProvider"/>
+                   sender="paasProvider"/>
    </messageLinks>
 </topology>
