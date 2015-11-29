@@ -1,20 +1,18 @@
 apply plugin: 'application'
-apply plugin: 'eclipse'
+apply from: 'eclipse.gradle'
 
 mainClassName = "BPEL4Chor2BPELCommandLine"
 
-sourceCompatibility = '1.5'
-targetCompatibility = '1.5'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
 repositories {
-	maven {
-		url "http://repo1.maven.org/maven2/"
-	}
+    jcenter()
 }
 
 dependencies {
 } 
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.2'
+    gradleVersion = '2.9'
 }

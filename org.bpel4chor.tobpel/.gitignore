@@ -1,6 +1,18 @@
-.classpath
-.gradle
-.project
-.settings/org.eclipse.jdt.core.prefs
-bin/
+# Gradle
 build/
+.gradle
+# generated when `gradlew --gui` is called
+ui/
+
+# IntelliJ IDEA
+out/
+*.iws
+.idea/
+*.ipr
+*.iml
+
+# Eclipse
+.settings/
+.classpath
+.project
+bin/
